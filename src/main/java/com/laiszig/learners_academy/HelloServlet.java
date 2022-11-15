@@ -2,8 +2,15 @@ package com.laiszig.learners_academy;
 
 import java.io.*;
 
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import com.laiszig.learners_academy.config.HibernateUtil;
+import com.laiszig.learners_academy.entity.CourseClass;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
@@ -17,7 +24,19 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        // Hello
+        CourseClass courseClass = new CourseClass();
+        courseClass.setName("Chemistry");
+
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.save(courseClass);
+            transaction.commit();
+
+        } catch(Exception exception) {
+            transaction.rollback();
+        }
+
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
