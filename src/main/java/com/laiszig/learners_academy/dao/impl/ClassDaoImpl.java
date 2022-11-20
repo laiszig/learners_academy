@@ -6,6 +6,9 @@ import com.laiszig.learners_academy.entity.CourseClass;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClassDaoImpl implements ClassDao {
 
     @Override
@@ -19,6 +22,23 @@ public class ClassDaoImpl implements ClassDao {
         } catch(Exception exception) {
             transaction.rollback();
         }
+    }
+
+    @Override
+    public List<CourseClass> findAll() {
+        List<CourseClass> classes = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            classes = session.createQuery("from CourseClass", CourseClass.class).list();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return classes;
     }
 
     @Override
