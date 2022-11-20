@@ -48,11 +48,9 @@ public class ClassDaoImpl implements ClassDao {
 
     @Override
     public void update(CourseClass courseClass) {
-
     }
 
     @Override
     public void delete(Long id) {
-
     }
 }

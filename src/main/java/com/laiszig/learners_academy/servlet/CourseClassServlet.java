@@ -1,7 +1,6 @@
 package com.laiszig.learners_academy.servlet;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.laiszig.learners_academy.entity.CourseClass;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "class", value = "/CourseClass")
 public class CourseClassServlet extends HttpServlet {
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String name = request.getParameter("name");

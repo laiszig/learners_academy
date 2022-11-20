@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Learner's Academy</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Learner's Academy" %>
 </h1>
 <br/>
-<a href="MyServlet">Hello Servlet</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/CourseClass">Classes</a>
 </body>
 </html>
