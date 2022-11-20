@@ -4,6 +4,7 @@ import java.io.*;
 
 import com.laiszig.learners_academy.config.HibernateUtil;
 import com.laiszig.learners_academy.entity.CourseClass;
+import com.laiszig.learners_academy.service.ClassService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,17 +26,10 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
 
         CourseClass courseClass = new CourseClass();
-        courseClass.setName("Chemistry");
+        courseClass.setName("Math");
 
-        Transaction transaction = null;
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            session.save(courseClass);
-            transaction.commit();
-
-        } catch(Exception exception) {
-            transaction.rollback();
-        }
+        ClassService classService = new ClassService();
+        classService.save(courseClass);
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
