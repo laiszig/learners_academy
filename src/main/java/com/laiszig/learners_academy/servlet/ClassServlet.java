@@ -1,4 +1,4 @@
-package com.laiszig.learners_academy;
+package com.laiszig.learners_academy.servlet;
 
 import java.io.*;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "class", value = "/class")
-public class HelloServlet extends HttpServlet {
+public class ClassServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

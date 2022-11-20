@@ -11,7 +11,7 @@
 <form method = "post"  action = "class">
     Name: <input type = "text" name = "name"/>
     <br>
-    <input type = "submit" value = "Login"/>
+    <input type = "submit" value = "Add"/>
 </form>
 </body>
 </html>
