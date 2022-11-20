@@ -9,8 +9,9 @@
 <h1><%= "Course Class: list" %>
 </h1>
 <br/>
-<table class="table table-bordered">
-    <thead class="thead-dark">
+<a href="http://localhost:8080/learners_academy_war_exploded/class/add.jsp">Add New Class</a>
+<table>
+    <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
