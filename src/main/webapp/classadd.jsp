@@ -8,7 +8,7 @@
 <h1><%= "Course Class" %>
 </h1>
 <br/>
-<form method = "post"  action = "CourseClass">
+<form method = "post"  action = "courseclass">
     Name: <input type = "text" name = "name"/>
     <br>
     <input type = "submit" value = "Add"/>

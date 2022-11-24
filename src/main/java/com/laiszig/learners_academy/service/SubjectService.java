@@ -4,7 +4,6 @@ import com.laiszig.learners_academy.dao.ClassDao;
 import com.laiszig.learners_academy.dao.SubjectDao;
 import com.laiszig.learners_academy.dao.impl.ClassDaoImpl;
 import com.laiszig.learners_academy.dao.impl.SubjectDaoImpl;
-import com.laiszig.learners_academy.entity.CourseClass;
 import com.laiszig.learners_academy.entity.Subject;
 
 import java.util.List;
@@ -17,6 +16,6 @@ public class SubjectService {
     }
 
     public List<Subject> findAll () {
-        return null;
-    }
+        SubjectDao subjectDao = new SubjectDaoImpl();
+        return subjectDao.findAll();    }
 }

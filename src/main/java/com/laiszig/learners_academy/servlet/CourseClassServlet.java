@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "class", value = "/CourseClass")
+@WebServlet(name = "class", value = "/courseclass")
 public class CourseClassServlet extends HttpServlet {
 
     @Override
@@ -33,7 +33,7 @@ public class CourseClassServlet extends HttpServlet {
         ClassService classService = new ClassService();
         List<CourseClass> classes = classService.findAll();
         request.setAttribute("classes", classes);
-        RequestDispatcher rdst =  request.getRequestDispatcher("class/list.jsp");
+        RequestDispatcher rdst =  request.getRequestDispatcher("classlist.jsp");
         rdst.forward(request, response);
     }
 

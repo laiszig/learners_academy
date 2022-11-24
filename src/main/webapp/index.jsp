@@ -8,6 +8,7 @@
 <h1><%= "Learner's Academy" %>
 </h1>
 <br/>
-<a href="http://localhost:8080/learners_academy_war_exploded/CourseClass">Classes</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/courseclass">Classes</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/subject">Subjects</a>
 </body>
 </html>

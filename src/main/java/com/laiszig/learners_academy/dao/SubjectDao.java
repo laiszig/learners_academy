@@ -8,4 +8,7 @@ import java.util.List;
 public interface SubjectDao {
 
     void save(Subject subject);
+
+    List<Subject> findAll();
+
 }

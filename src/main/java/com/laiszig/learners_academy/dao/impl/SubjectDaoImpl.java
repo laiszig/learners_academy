@@ -1,9 +1,7 @@
 package com.laiszig.learners_academy.dao.impl;
 
 import com.laiszig.learners_academy.config.HibernateUtil;
-import com.laiszig.learners_academy.dao.ClassDao;
 import com.laiszig.learners_academy.dao.SubjectDao;
-import com.laiszig.learners_academy.entity.CourseClass;
 import com.laiszig.learners_academy.entity.Subject;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,6 +23,23 @@ public class SubjectDaoImpl implements SubjectDao {
             exception.printStackTrace();
             transaction.rollback();
         }
+    }
+
+    @Override
+    public List<Subject> findAll() {
+        List<Subject> subjects = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            subjects = session.createQuery("from Subject", Subject.class).list();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return subjects;
     }
 
 }
