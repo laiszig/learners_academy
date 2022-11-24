@@ -13,5 +13,7 @@
     <br>
     <input type = "submit" value = "Add"/>
 </form>
+<br>
+<a href="http://localhost:8080/learners_academy_war_exploded/courseclass">Classes</a>
 </body>
 </html>

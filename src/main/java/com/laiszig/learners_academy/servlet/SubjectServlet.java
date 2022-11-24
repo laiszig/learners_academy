@@ -28,6 +28,8 @@ public class SubjectServlet extends HttpServlet {
 
         SubjectService subjectService = new SubjectService();
         subjectService.save(subject);
+
+        response.sendRedirect(request.getHeader("referer"));
     }
 
     @Override
