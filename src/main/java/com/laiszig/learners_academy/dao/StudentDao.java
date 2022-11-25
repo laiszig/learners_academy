@@ -1,6 +1,5 @@
 package com.laiszig.learners_academy.dao;
 
-import com.laiszig.learners_academy.entity.CourseClass;
 import com.laiszig.learners_academy.entity.Student;
 
 import java.util.List;
@@ -8,5 +7,5 @@ import java.util.List;
 public interface StudentDao {
 
     void save(Student student);
-    List<CourseClass> findAll();
+    List<Student> findAll();
 }

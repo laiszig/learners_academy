@@ -37,7 +37,7 @@ public class SubjectDaoImpl implements SubjectDao {
             session.getTransaction().commit();
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return subjects;
     }

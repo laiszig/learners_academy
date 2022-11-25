@@ -36,7 +36,7 @@ public class ClassDaoImpl implements ClassDao {
             session.getTransaction().commit();
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return classes;
     }

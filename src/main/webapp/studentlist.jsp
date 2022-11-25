@@ -3,29 +3,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Subject</title>
+    <title>Student</title>
 </head>
 <body>
-<h1><%= "Subject: list" %>
+<h1><%= "Student: list" %>
 </h1>
 <br/>
-<a href="http://localhost:8080/learners_academy_war_exploded/subjectadd.jsp">Add New Subject</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/studentadd.jsp">Add New Student</a>
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Subject</th>
-        <th>Subject Description</th>
+        <th>Student</th>
+        <th>Class ID</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${subjects}" var="subject" >
+    <c:forEach items="${students}" var="student" >
 
         <tr>
-            <td>${subject.id}</td>
-            <td>${subject.name}</td>
-            <td>${subject.description}</td>
+            <td>${student.id}</td>
+            <td>${student.name}</td>
+            <td>${student.classId}</td>
             </td>
         </tr>
     </c:forEach>
