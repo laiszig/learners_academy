@@ -11,5 +11,6 @@
 <a href="http://localhost:8080/learners_academy_war_exploded/courseclass">Classes</a>
 <a href="http://localhost:8080/learners_academy_war_exploded/subject">Subjects</a>
 <a href="http://localhost:8080/learners_academy_war_exploded/student">Students</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/teacher">Teachers</a>
 </body>
 </html>
