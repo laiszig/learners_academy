@@ -15,5 +15,11 @@ public class StudentService {
 
     public List<Student> findAll () {
         StudentDao studentDao = new StudentDaoImpl();
-        return studentDao.findAll();    }
+        return studentDao.findAll();
+    }
+
+    public Student findById (long id) {
+        StudentDao studentDao = new StudentDaoImpl();
+        return studentDao.findById(id);
+    }
 }

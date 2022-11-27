@@ -6,8 +6,7 @@
     <title>Student</title>
 </head>
 <body>
-<h1><%= "Student: edit" %>
-</h1>
+<h1> Editing Student: ${student.name}</h1>
 <br/>
 <a href="http://localhost:8080/learners_academy_war_exploded/student">Back to Student List</a>
 </body>

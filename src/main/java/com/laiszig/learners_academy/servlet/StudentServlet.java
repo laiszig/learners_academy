@@ -43,6 +43,9 @@ public class StudentServlet extends HttpServlet {
             RequestDispatcher rdst = request.getRequestDispatcher("studentlist.jsp");
             rdst.forward(request, response);
         } else {
+            StudentService studentService = new StudentService();
+            Student student = studentService.findById(Long.parseLong(id));
+            request.setAttribute("student", student);
             RequestDispatcher rdst = request.getRequestDispatcher("studentedit.jsp");
             rdst.forward(request, response);
         }

@@ -41,4 +41,21 @@ public class StudentDaoImpl implements StudentDao {
         }
         return students;
     }
+
+    @Override
+    public Student findById(long id) {
+        Student student = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            student = session.createQuery("from Student where id = " + id, Student.class).getSingleResult();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return student;
+    }
 }
