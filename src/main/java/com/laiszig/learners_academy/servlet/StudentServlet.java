@@ -25,18 +25,27 @@ public class StudentServlet extends HttpServlet {
 
         StudentService studentService = new StudentService();
         studentService.save(student);
-
         response.sendRedirect(request.getHeader("referer"));
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String url = request.getRequestURL().toString();
+        System.out.println(url);
+        String id = request.getParameter("id");
+        System.out.println(id);
 
-        StudentService studentService = new StudentService();
-        List<Student> students = studentService.findAll();
-        request.setAttribute("students", students);
-        RequestDispatcher rdst =  request.getRequestDispatcher("studentlist.jsp");
-        rdst.forward(request, response);
+        if (id == null) {
+            StudentService studentService = new StudentService();
+            List<Student> students = studentService.findAll();
+            request.setAttribute("students", students);
+
+            RequestDispatcher rdst = request.getRequestDispatcher("studentlist.jsp");
+            rdst.forward(request, response);
+        } else {
+            RequestDispatcher rdst = request.getRequestDispatcher("studentedit.jsp");
+            rdst.forward(request, response);
+        }
     }
 }
 
