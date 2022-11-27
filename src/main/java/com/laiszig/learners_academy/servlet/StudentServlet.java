@@ -1,6 +1,8 @@
 package com.laiszig.learners_academy.servlet;
 
+import com.laiszig.learners_academy.entity.CourseClass;
 import com.laiszig.learners_academy.entity.Student;
+import com.laiszig.learners_academy.service.ClassService;
 import com.laiszig.learners_academy.service.StudentService;
 
 import javax.servlet.RequestDispatcher;
@@ -46,6 +48,11 @@ public class StudentServlet extends HttpServlet {
             StudentService studentService = new StudentService();
             Student student = studentService.findById(Long.parseLong(id));
             request.setAttribute("student", student);
+
+            ClassService classService = new ClassService();
+            List<CourseClass> classes = classService.findAll();
+            request.setAttribute("classes", classes);
+
             RequestDispatcher rdst = request.getRequestDispatcher("studentedit.jsp");
             rdst.forward(request, response);
         }

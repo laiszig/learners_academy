@@ -14,8 +14,9 @@ public class Student {
     @Column(name = "student_name")
     private String name;
 
-    @Column(name = "class_id")
-    private long classId;
+    @ManyToOne
+    @JoinColumn(name="class_id", nullable=false)
+    private CourseClass courseClass;
 
     public long getId() {
         return id;
@@ -33,11 +34,11 @@ public class Student {
         this.name = name;
     }
 
-    public long getClassId() {
-        return classId;
+    public CourseClass getCourseClass() {
+        return courseClass;
     }
 
-    public void setClassId(long classId) {
-        this.classId = classId;
+    public void setCourseClass(CourseClass courseClass) {
+        this.courseClass = courseClass;
     }
 }

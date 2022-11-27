@@ -1,13 +1,9 @@
 package com.laiszig.learners_academy.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "class")
@@ -26,6 +22,17 @@ public class CourseClass {
 
     @Column(name= "end_date")
     private Date endDate;
+
+    @OneToMany(mappedBy = "courseClass")
+    private List<Student> students;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
     public long getId() {
         return id;

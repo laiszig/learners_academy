@@ -25,7 +25,7 @@
         <tr style="border: 1px solid black;">
             <td width="50" style="border: 1px solid black; text-align: center">${student.id}</td>
             <td width="250" style="border: 1px solid black; text-align: center">${student.name}</td>
-            <td width="50" style="border: 1px solid black; text-align: center">${student.classId}</td>
+            <td width="50" style="border: 1px solid black; text-align: center">${student.courseClass.name}</td>
             <td width="50" style="border: 1px solid black; text-align: center"> <a href="http://localhost:8080/learners_academy_war_exploded/student?id=${student.id}">Edit</a>
             </td>
         </tr>
