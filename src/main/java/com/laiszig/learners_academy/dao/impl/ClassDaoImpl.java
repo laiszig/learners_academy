@@ -3,6 +3,7 @@ package com.laiszig.learners_academy.dao.impl;
 import com.laiszig.learners_academy.config.HibernateUtil;
 import com.laiszig.learners_academy.dao.ClassDao;
 import com.laiszig.learners_academy.entity.CourseClass;
+import com.laiszig.learners_academy.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -52,5 +53,22 @@ public class ClassDaoImpl implements ClassDao {
 
     @Override
     public void delete(Long id) {
+    }
+
+    @Override
+    public CourseClass findById(long id) {
+        CourseClass courseClass = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            courseClass = session.createQuery("from CourseClass where id = " + id, CourseClass.class).getSingleResult();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseClass;
     }
 }

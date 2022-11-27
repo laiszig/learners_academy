@@ -9,13 +9,13 @@ public class Student {
     @Id
     @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "student_name")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="class_id", nullable=false)
+    @JoinColumn(name="class_id", nullable=true)
     private CourseClass courseClass;
 
     public long getId() {
@@ -40,5 +40,17 @@ public class Student {
 
     public void setCourseClass(CourseClass courseClass) {
         this.courseClass = courseClass;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Student )) return false;
+        return id != null && id.equals(((Student) object).getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

@@ -12,7 +12,7 @@ public class CourseClass {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "class_id")
-    private long id;
+    private Long id;
 
     @Column(name= "name")
     private String name;
@@ -74,5 +74,15 @@ public class CourseClass {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+        student.setCourseClass(this);
+    }
+
+    public void removeStudent(Student student){
+        students.remove(student);
+        student.setCourseClass(null);
     }
 }

@@ -10,6 +10,7 @@
 </h1>
 <br/>
 <a href="http://localhost:8080/learners_academy_war_exploded/teacheradd.jsp">Add New Teacher</a>
+<a href="http://localhost:8080/learners_academy_war_exploded/">Back</a>
 <table>
     <thead>
     <tr>

@@ -1,5 +1,10 @@
 package com.laiszig.learners_academy.servlet;
 
+import com.laiszig.learners_academy.entity.CourseClass;
+import com.laiszig.learners_academy.entity.Student;
+import com.laiszig.learners_academy.service.ClassService;
+import com.laiszig.learners_academy.service.StudentService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +17,16 @@ public class ClassEnrollServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String studentId = request.getParameter("student_id");
+        String classId = request.getParameter("classes");
 
-        String classes = request.getParameter("classes");
+        ClassService classService = new ClassService();
+        CourseClass courseClass = classService.findById(Long.parseLong(classId));
 
+        StudentService studentService = new StudentService();
+        Student student = studentService.findById(Long.parseLong(studentId));
+
+        courseClass.addStudent(student);
+        classService.save(courseClass);
     }
 }
