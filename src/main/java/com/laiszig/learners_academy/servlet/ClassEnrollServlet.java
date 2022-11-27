@@ -25,8 +25,7 @@ public class ClassEnrollServlet extends HttpServlet {
 
         StudentService studentService = new StudentService();
         Student student = studentService.findById(Long.parseLong(studentId));
-
-        courseClass.addStudent(student);
-        classService.save(courseClass);
+        student.setCourseClass(courseClass);
+        studentService.save(student);
     }
 }

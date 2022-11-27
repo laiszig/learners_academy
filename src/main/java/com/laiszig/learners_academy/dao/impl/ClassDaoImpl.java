@@ -17,7 +17,7 @@ public class ClassDaoImpl implements ClassDao {
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             transaction = session.beginTransaction();
-            session.save(courseClass);
+            session.saveOrUpdate(courseClass);
             transaction.commit();
 
         } catch(Exception exception) {

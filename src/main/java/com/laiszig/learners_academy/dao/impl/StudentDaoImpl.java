@@ -16,7 +16,7 @@ public class StudentDaoImpl implements StudentDao {
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             transaction = session.beginTransaction();
-            session.save(student);
+            session.saveOrUpdate(student);
             transaction.commit();
 
         } catch(Exception exception) {
