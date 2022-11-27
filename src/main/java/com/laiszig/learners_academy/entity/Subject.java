@@ -19,8 +19,11 @@ public class Subject {
     @Column(name = "subject_description")
     private String description;
 
-    @ManyToMany(mappedBy = "subjects")
-    private List<CourseClass> classes;
+    @OneToMany(mappedBy = "subject", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<ClassSubjectTeacherLink> classSubjectTeacherLinks;
+
+//    @ManyToMany(mappedBy = "subjects")
+//    private List<CourseClass> classes;
 
     public long getId() {
         return id;
@@ -46,13 +49,21 @@ public class Subject {
         this.description = description;
     }
 
-    public List<CourseClass> getClasses() {
-        return classes;
+    public List<ClassSubjectTeacherLink> getClassSubjectTeacherLinks() {
+        return classSubjectTeacherLinks;
     }
 
-    public void setClasses(List<CourseClass> classes) {
-        this.classes = classes;
+    public void setClassSubjectTeacherLinks(List<ClassSubjectTeacherLink> classSubjectTeacherLinks) {
+        this.classSubjectTeacherLinks = classSubjectTeacherLinks;
     }
+
+    //    public List<CourseClass> getClasses() {
+//        return classes;
+//    }
+//
+//    public void setClasses(List<CourseClass> classes) {
+//        this.classes = classes;
+//    }
 
     @Override
     public String toString() {

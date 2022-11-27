@@ -23,14 +23,12 @@
     </thead>
     <tbody>
     <c:forEach items="${classes}" var="courseClass" >
-
         <tr>
-            <td>${courseClass.id}</td>
-            <td>${courseClass.name}</td>
-            <td>${courseClass.startDate}</td>
-            <td>${courseClass.endDate}</td>
-            <td>
-            </td>
+            <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.id}</td>
+            <td  width="250" style="border: 1px solid black; text-align: center">${courseClass.name}</td>
+            <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.startDate}</td>
+            <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.endDate}</td>
+            <td width="50" style="border: 1px solid black; text-align: center"> <a href="http://localhost:8080/learners_academy_war_exploded/courseclass?id=${courseClass.id}">Edit</a>
         </tr>
     </c:forEach>
     </tbody>

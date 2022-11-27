@@ -11,21 +11,28 @@
 <a href="http://localhost:8080/learners_academy_war_exploded/courseclass">Back to Class List</a>
 <br>
 <br>
-<ul>
-<c:forEach items="${subjects}" var="subject" >
-    <li>${subject.name}</li>
-</c:forEach>
-</ul>
-<%--<label for="classes">Choose a class:</label>--%>
+<%--<ul>--%>
+<%--<c:forEach items="${subjects}" var="subject" >--%>
+<%--    <li>${subject.name}</li>--%>
+<%--</c:forEach>--%>
+<%--</ul>--%>
 
-<%--<form method = "post"  action = "classenroll">--%>
-<%--    <select name="classes" id="classes">--%>
-<%--        <c:forEach items="${classes}" var="courseClass" >--%>
-<%--            <option value="${courseClass.id}">${courseClass.name}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
-<%--    <input type="hidden" id="student_id"  name="student_id" value="${student.id}"/>--%>
-<%--    <input type = "submit" value = "Enroll"/>--%>
-<%--</form>--%>
+
+<form method = "post"  action = "assignteacher">
+    <label for="subject_id">Subject</label>
+    <select name="subject_id" id="subject_id">
+        <c:forEach items="${subjects}" var="subject" >
+            <option value="${subject.id}">${subject.name}</option>
+        </c:forEach>
+    </select>
+    <label for="teacher_id">Teacher</label>
+    <select name="teacher_id" id="teacher_id">
+        <c:forEach items="${teachers}" var="teacher" >
+            <option value="${teacher.id}">${teacher.name}</option>
+        </c:forEach>
+    </select>
+    <input type="hidden" id="class_id"  name="class_id" value="${courseClass.id}"/>
+    <input type = "submit" value = "Assign"/>
+</form>
 </body>
 </html>

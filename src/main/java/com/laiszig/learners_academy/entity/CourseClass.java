@@ -26,13 +26,16 @@ public class CourseClass {
     @OneToMany(mappedBy = "courseClass")
     private List<Student> students;
 
-    @ManyToMany
-    @JoinTable(
-            name = "class_subject_teacher",
-            joinColumns = { @JoinColumn(name = "class_id") },
-            inverseJoinColumns = { @JoinColumn(name = "subject_id") }
-    )
-    private List<Subject> subjects;
+    @OneToMany(mappedBy = "courseClass", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<ClassSubjectTeacherLink> classSubjectTeacherLinks;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "class_subject_teacher",
+//            joinColumns = { @JoinColumn(name = "class_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "subject_id") }
+//    )
+//    private List<Subject> subjects;
 
     public List<Student> getStudents() {
         return students;
@@ -74,13 +77,25 @@ public class CourseClass {
         this.endDate = endDate;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
+    public List<ClassSubjectTeacherLink> getClassSubjectTeacherLinks() {
+        return classSubjectTeacherLinks;
     }
+
+    public void setClassSubjectTeacherLinks(List<ClassSubjectTeacherLink> classSubjectTeacherLinks) {
+        this.classSubjectTeacherLinks = classSubjectTeacherLinks;
+    }
+
+    //    public List<Subject> getSubjects() {
+//        return subjects;
+//    }
+//
+//    public void setSubjects(List<Subject> subjects) {
+//        this.subjects = subjects;
+//    }
 
     @Override
     public String toString() {

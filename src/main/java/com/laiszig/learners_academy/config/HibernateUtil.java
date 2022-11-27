@@ -2,10 +2,7 @@ package com.laiszig.learners_academy.config;
 
 import java.util.Properties;
 
-import com.laiszig.learners_academy.entity.CourseClass;
-import com.laiszig.learners_academy.entity.Student;
-import com.laiszig.learners_academy.entity.Subject;
-import com.laiszig.learners_academy.entity.Teacher;
+import com.laiszig.learners_academy.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -36,6 +33,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Subject.class);
                 configuration.addAnnotatedClass(Student.class);
                 configuration.addAnnotatedClass(Teacher.class);
+                configuration.addAnnotatedClass(ClassSubjectTeacherLink.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

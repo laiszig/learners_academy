@@ -2,6 +2,8 @@ package com.laiszig.learners_academy.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "teacher")
 public class Teacher {
@@ -13,6 +15,9 @@ public class Teacher {
 
     @Column(name = "teacher_name")
     private String name;
+
+    @OneToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<ClassSubjectTeacherLink> classSubjectTeacherLinks;
 
     public long getId() {
         return id;
@@ -28,5 +33,13 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<ClassSubjectTeacherLink> getClassSubjectTeacherLinks() {
+        return classSubjectTeacherLinks;
+    }
+
+    public void setClassSubjectTeacherLinks(List<ClassSubjectTeacherLink> classSubjectTeacherLinks) {
+        this.classSubjectTeacherLinks = classSubjectTeacherLinks;
     }
 }
