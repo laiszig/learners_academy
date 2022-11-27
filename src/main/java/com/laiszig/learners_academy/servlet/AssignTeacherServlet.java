@@ -1,7 +1,12 @@
 package com.laiszig.learners_academy.servlet;
 
+import com.laiszig.learners_academy.entity.ClassSubjectTeacherLink;
+import com.laiszig.learners_academy.entity.CourseClass;
+import com.laiszig.learners_academy.entity.Subject;
 import com.laiszig.learners_academy.entity.Teacher;
+import com.laiszig.learners_academy.service.AssignTeacherService;
 import com.laiszig.learners_academy.service.ClassService;
+import com.laiszig.learners_academy.service.SubjectService;
 import com.laiszig.learners_academy.service.TeacherService;
 
 import javax.servlet.*;
@@ -26,7 +31,16 @@ public class AssignTeacherServlet extends HttpServlet {
         Teacher teacher = teacherService.findById(Long.valueOf(teacherId));
 
         ClassService classService = new ClassService();
+        CourseClass courseClass = classService.findById(Long.parseLong(classId));
 
+        SubjectService subjectService = new SubjectService();
+        Subject subject = subjectService.findById(Long.valueOf(subjectId));
 
+        ClassSubjectTeacherLink link = new ClassSubjectTeacherLink();
+        link.setTeacher(teacher);
+        link.setCourseClass(courseClass);
+        link.setSubject(subject);
+        AssignTeacherService assignTeacherService = new AssignTeacherService();
+        assignTeacherService.save(link);
     }
 }
