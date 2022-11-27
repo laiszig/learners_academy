@@ -2,6 +2,8 @@ package com.laiszig.learners_academy.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table (name = "subject")
 public class Subject {
@@ -16,6 +18,9 @@ public class Subject {
 
     @Column(name = "subject_description")
     private String description;
+
+    @ManyToMany(mappedBy = "subjects")
+    private List<CourseClass> classes;
 
     public long getId() {
         return id;
@@ -39,6 +44,14 @@ public class Subject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<CourseClass> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<CourseClass> classes) {
+        this.classes = classes;
     }
 
     @Override

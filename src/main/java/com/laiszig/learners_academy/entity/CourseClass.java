@@ -26,6 +26,14 @@ public class CourseClass {
     @OneToMany(mappedBy = "courseClass")
     private List<Student> students;
 
+    @ManyToMany
+    @JoinTable(
+            name = "class_subject_teacher",
+            joinColumns = { @JoinColumn(name = "class_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subject_id") }
+    )
+    private List<Subject> subjects;
+
     public List<Student> getStudents() {
         return students;
     }
@@ -66,6 +74,14 @@ public class CourseClass {
         this.endDate = endDate;
     }
 
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
     @Override
     public String toString() {
         return "CourseClass{" +
@@ -76,13 +92,13 @@ public class CourseClass {
                 '}';
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
-        student.setCourseClass(this);
-    }
-
-    public void removeStudent(Student student){
-        students.remove(student);
-        student.setCourseClass(null);
-    }
+//    public void addStudent(Student student) {
+//        students.add(student);
+//        student.setCourseClass(this);
+//    }
+//
+//    public void removeStudent(Student student){
+//        students.remove(student);
+//        student.setCourseClass(null);
+//    }
 }

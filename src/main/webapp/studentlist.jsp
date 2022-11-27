@@ -16,7 +16,7 @@
     <tr>
         <th>ID</th>
         <th>Student</th>
-        <th>Class ID</th>
+        <th>Class</th>
         <th></th>
     </tr>
     </thead>

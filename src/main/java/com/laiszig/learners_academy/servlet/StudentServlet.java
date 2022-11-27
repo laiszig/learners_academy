@@ -32,10 +32,8 @@ public class StudentServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String url = request.getRequestURL().toString();
-        System.out.println(url);
+
         String id = request.getParameter("id");
-        System.out.println(id);
 
         if (id == null) {
             StudentService studentService = new StudentService();

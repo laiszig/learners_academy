@@ -32,11 +32,23 @@ public class CourseClassServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        ClassService classService = new ClassService();
-        List<CourseClass> classes = classService.findAll();
-        request.setAttribute("classes", classes);
-        RequestDispatcher rdst =  request.getRequestDispatcher("classlist.jsp");
-        rdst.forward(request, response);
+        String id = request.getParameter("id");
+
+        if (id == null) {
+            ClassService classService = new ClassService();
+            List<CourseClass> classes = classService.findAll();
+            request.setAttribute("classes", classes);
+            RequestDispatcher rdst = request.getRequestDispatcher("classlist.jsp");
+            rdst.forward(request, response);
+        }
+        else {
+            ClassService classService = new ClassService();
+            CourseClass courseClass = classService.findById(Long.parseLong(id));
+            request.setAttribute("courseClass", courseClass);
+
+            RequestDispatcher rdst = request.getRequestDispatcher("classedit.jsp");
+            rdst.forward(request, response);
+        }
     }
 
     public void destroy() {
