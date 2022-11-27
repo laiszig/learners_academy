@@ -43,7 +43,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student findById(long id) {
+    public Student findById(Long id) {
         Student student = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
 

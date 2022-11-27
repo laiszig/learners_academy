@@ -9,5 +9,5 @@ public interface StudentDao {
     void save(Student student);
     List<Student> findAll();
 
-    Student findById(long id);
+    Student findById(Long id);
 }

@@ -3,6 +3,7 @@ package com.laiszig.learners_academy.dao.impl;
 import com.laiszig.learners_academy.config.HibernateUtil;
 import com.laiszig.learners_academy.dao.SubjectDao;
 import com.laiszig.learners_academy.entity.Subject;
+import com.laiszig.learners_academy.entity.Teacher;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -40,6 +41,23 @@ public class SubjectDaoImpl implements SubjectDao {
             e.printStackTrace();
         }
         return subjects;
+    }
+
+    @Override
+    public Subject findById(Long id) {
+        Subject subject = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            subject = session.createQuery("from Subject where id = " + id, Subject.class).getSingleResult();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return subject;
     }
 
 }

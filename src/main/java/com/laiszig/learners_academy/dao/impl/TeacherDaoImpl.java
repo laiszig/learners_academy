@@ -1,9 +1,8 @@
 package com.laiszig.learners_academy.dao.impl;
 
 import com.laiszig.learners_academy.config.HibernateUtil;
-import com.laiszig.learners_academy.dao.SubjectDao;
 import com.laiszig.learners_academy.dao.TeacherDao;
-import com.laiszig.learners_academy.entity.Subject;
+import com.laiszig.learners_academy.entity.Student;
 import com.laiszig.learners_academy.entity.Teacher;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -44,4 +43,20 @@ public class TeacherDaoImpl implements TeacherDao {
         return teachers;
     }
 
+    @Override
+    public Teacher findById(Long id) {
+        Teacher teacher = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            teacher = session.createQuery("from Teacher where id = " + id, Teacher.class).getSingleResult();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return teacher;
+    }
 }

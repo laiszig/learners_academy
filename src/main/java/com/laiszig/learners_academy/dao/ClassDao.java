@@ -11,6 +11,5 @@ public interface ClassDao {
     CourseClass find(Long id);
     void update(CourseClass courseClass);
     void delete(Long id);
-
     CourseClass findById(long id);
 }

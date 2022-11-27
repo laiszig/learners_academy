@@ -18,7 +18,7 @@ public class StudentService {
         return studentDao.findAll();
     }
 
-    public Student findById (long id) {
+    public Student findById (Long id) {
         StudentDao studentDao = new StudentDaoImpl();
         return studentDao.findById(id);
     }
