@@ -37,6 +37,7 @@ public class TeacherServlet extends HttpServlet {
         TeacherService teacherService = new TeacherService();
         List<Teacher> teachers = teacherService.findAll();
         request.setAttribute("teachers", teachers);
+
         RequestDispatcher rdst =  request.getRequestDispatcher("teacherlist.jsp");
         rdst.forward(request, response);
     }

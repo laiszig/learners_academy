@@ -42,5 +42,7 @@ public class AssignTeacherServlet extends HttpServlet {
         link.setSubject(subject);
         AssignTeacherService assignTeacherService = new AssignTeacherService();
         assignTeacherService.save(link);
+
+        response.sendRedirect(request.getHeader("referer"));
     }
 }

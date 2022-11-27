@@ -38,6 +38,7 @@ public class SubjectServlet extends HttpServlet {
         SubjectService subjectService = new SubjectService();
         List<Subject> subjects = subjectService.findAll();
         request.setAttribute("subjects", subjects);
+
         RequestDispatcher rdst =  request.getRequestDispatcher("subjectlist.jsp");
         rdst.forward(request, response);
     }

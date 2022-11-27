@@ -17,7 +17,6 @@
 <%--</c:forEach>--%>
 <%--</ul>--%>
 
-
 <form method = "post"  action = "assignteacher">
     <label for="subject_id">Subject</label>
     <select name="subject_id" id="subject_id">
@@ -34,5 +33,21 @@
     <input type="hidden" id="class_id"  name="class_id" value="${courseClass.id}"/>
     <input type = "submit" value = "Assign"/>
 </form>
+<table>
+    <thead>
+    <tr>
+        <th>Subject</th>
+        <th>Teacher</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${links}" var="link" >
+        <tr>
+            <td  width="200" style="border: 1px solid black; text-align: center">${link.subject.name}</td>
+            <td  width="200" style="border: 1px solid black; text-align: center">${link.teacher.name}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>

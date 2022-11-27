@@ -3,9 +3,11 @@ package com.laiszig.learners_academy.servlet;
 import java.io.*;
 import java.util.List;
 
+import com.laiszig.learners_academy.entity.ClassSubjectTeacherLink;
 import com.laiszig.learners_academy.entity.CourseClass;
 import com.laiszig.learners_academy.entity.Subject;
 import com.laiszig.learners_academy.entity.Teacher;
+import com.laiszig.learners_academy.service.AssignTeacherService;
 import com.laiszig.learners_academy.service.ClassService;
 import com.laiszig.learners_academy.service.SubjectService;
 import com.laiszig.learners_academy.service.TeacherService;
@@ -57,6 +59,10 @@ public class CourseClassServlet extends HttpServlet {
             ClassService classService = new ClassService();
             CourseClass courseClass = classService.findById(Long.parseLong(id));
             request.setAttribute("courseClass", courseClass);
+
+            AssignTeacherService assignTeacherService = new AssignTeacherService();
+            List<ClassSubjectTeacherLink> links = assignTeacherService.findAllByClass(Long.valueOf(id));
+            request.setAttribute("links", links);
 
             RequestDispatcher rdst = request.getRequestDispatcher("classedit.jsp");
             rdst.forward(request, response);

@@ -32,7 +32,7 @@ public class AssignTeacherDaoImpl implements AssignTeacherDao {
         try {
             session.beginTransaction();
 
-            links = session.createQuery("from ClassSubjectTeacherLink where courseClass.id", ClassSubjectTeacherLink.class).list();
+            links = session.createQuery("from ClassSubjectTeacherLink where courseClass.id = "+ classId, ClassSubjectTeacherLink.class).list();
             session.getTransaction().commit();
 
         } catch (Exception e) {
