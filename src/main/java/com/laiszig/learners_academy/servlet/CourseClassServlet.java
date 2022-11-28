@@ -3,14 +3,9 @@ package com.laiszig.learners_academy.servlet;
 import java.io.*;
 import java.util.List;
 
-import com.laiszig.learners_academy.entity.ClassSubjectTeacherLink;
-import com.laiszig.learners_academy.entity.CourseClass;
-import com.laiszig.learners_academy.entity.Subject;
-import com.laiszig.learners_academy.entity.Teacher;
-import com.laiszig.learners_academy.service.AssignTeacherService;
-import com.laiszig.learners_academy.service.ClassService;
-import com.laiszig.learners_academy.service.SubjectService;
-import com.laiszig.learners_academy.service.TeacherService;
+import com.laiszig.learners_academy.dao.StudentDao;
+import com.laiszig.learners_academy.entity.*;
+import com.laiszig.learners_academy.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,8 +41,10 @@ public class CourseClassServlet extends HttpServlet {
             request.setAttribute("classes", classes);
             RequestDispatcher rdst = request.getRequestDispatcher("classlist.jsp");
             rdst.forward(request, response);
+            return;
         }
-        else {
+        String page = request.getParameter("page");
+        if (page.equals("assignTeachers")){
             SubjectService subjectService = new SubjectService();
             List<Subject> subjects = subjectService.findAll();
             request.setAttribute("subjects", subjects);
@@ -65,6 +62,34 @@ public class CourseClassServlet extends HttpServlet {
             request.setAttribute("links", links);
 
             RequestDispatcher rdst = request.getRequestDispatcher("classedit.jsp");
+            rdst.forward(request, response);
+        }
+        else if (page.equals("viewStudents")){
+            StudentService studentService = new StudentService();
+            List<Student> students = studentService.findAllByClassId(Long.valueOf(id));
+            request.setAttribute("students", students);
+
+            ClassService classService = new ClassService();
+            CourseClass courseClass = classService.findById(Long.parseLong(id));
+            request.setAttribute("courseClass", courseClass);
+
+            RequestDispatcher rdst = request.getRequestDispatcher("classstudentsview.jsp");
+            rdst.forward(request, response);
+        }
+        else if (page.equals("report")){
+            StudentService studentService = new StudentService();
+            List<Student> students = studentService.findAllByClassId(Long.valueOf(id));
+            request.setAttribute("students", students);
+
+            ClassService classService = new ClassService();
+            CourseClass courseClass = classService.findById(Long.parseLong(id));
+            request.setAttribute("courseClass", courseClass);
+
+            AssignTeacherService assignTeacherService = new AssignTeacherService();
+            List<ClassSubjectTeacherLink> links = assignTeacherService.findAllByClass(Long.valueOf(id));
+            request.setAttribute("links", links);
+
+            RequestDispatcher rdst = request.getRequestDispatcher("classreport.jsp");
             rdst.forward(request, response);
         }
     }

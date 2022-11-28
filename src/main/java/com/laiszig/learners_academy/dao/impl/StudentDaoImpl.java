@@ -58,4 +58,21 @@ public class StudentDaoImpl implements StudentDao {
         }
         return student;
     }
+
+    @Override
+    public List<Student> findAllByClassId(Long id) {
+        List<Student> students = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            session.beginTransaction();
+
+            students = session.createQuery("from Student where courseClass.id = " + id, Student.class).list();
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
+    }
 }

@@ -10,4 +10,6 @@ public interface StudentDao {
     List<Student> findAll();
 
     Student findById(Long id);
+
+    List<Student> findAllByClassId(Long id);
 }

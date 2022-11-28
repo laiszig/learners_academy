@@ -22,4 +22,9 @@ public class StudentService {
         StudentDao studentDao = new StudentDaoImpl();
         return studentDao.findById(id);
     }
+
+    public List<Student> findAllByClassId (Long id) {
+        StudentDao studentDao = new StudentDaoImpl();
+        return studentDao.findAllByClassId(id);
+    }
 }
