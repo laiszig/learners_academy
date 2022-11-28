@@ -11,7 +11,7 @@
 <br/>
 <a href="http://localhost:8080/learners_academy_war_exploded/subjectadd.jsp">Add New Subject</a>
 <a href="http://localhost:8080/learners_academy_war_exploded/">Back</a>
-<table>
+<table style="border: 1px solid black;">
     <thead>
     <tr>
         <th>ID</th>
@@ -23,10 +23,10 @@
     <tbody>
     <c:forEach items="${subjects}" var="subject" >
 
-        <tr>
-            <td>${subject.id}</td>
-            <td>${subject.name}</td>
-            <td>${subject.description}</td>
+        <tr style="border: 1px solid black;">
+            <td width="50" style="border: 1px solid black; text-align: center">${subject.id}</td>
+            <td width="200" style="border: 1px solid black; text-align: center">${subject.name}</td>
+            <td width="200" style="border: 1px solid black; text-align: center">${subject.description}</td>
             </td>
         </tr>
     </c:forEach>

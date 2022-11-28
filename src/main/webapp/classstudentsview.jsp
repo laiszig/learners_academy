@@ -23,7 +23,7 @@
 
         <tr style="border: 1px solid black;">
             <td width="50" style="border: 1px solid black; text-align: center">${student.id}</td>
-            <td width="250" style="border: 1px solid black; text-align: center">${student.name}</td>
+            <td width="200" style="border: 1px solid black; text-align: center">${student.name}</td>
             </td>
         </tr>
     </c:forEach>

@@ -12,7 +12,7 @@
 <br/>
 <a href="http://localhost:8080/learners_academy_war_exploded/courseclass">Back</a>
 <h2>Subjects</h2>
-<table>
+<table style="border: 1px solid black;">
     <thead>
     <tr>
         <th>Subject</th>
@@ -41,7 +41,7 @@
 
         <tr style="border: 1px solid black;">
             <td width="50" style="border: 1px solid black; text-align: center">${student.id}</td>
-            <td width="250" style="border: 1px solid black; text-align: center">${student.name}</td>
+            <td width="200" style="border: 1px solid black; text-align: center">${student.name}</td>
             </td>
         </tr>
     </c:forEach>

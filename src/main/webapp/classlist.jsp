@@ -11,7 +11,7 @@
 <br/>
 <a href="http://localhost:8080/learners_academy_war_exploded/classadd.jsp">Add New Class</a>
 <a href="http://localhost:8080/learners_academy_war_exploded/">Back</a>
-<table>
+<table style="border: 1px solid black;">
     <thead>
     <tr>
         <th>ID</th>
@@ -25,11 +25,11 @@
     </thead>
     <tbody>
     <c:forEach items="${classes}" var="courseClass" >
-        <tr>
+        <tr style="border: 1px solid black;">
             <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.id}</td>
-            <td  width="250" style="border: 1px solid black; text-align: center">${courseClass.name}</td>
-            <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.startDate}</td>
-            <td  width="50" style="border: 1px solid black; text-align: center">${courseClass.endDate}</td>
+            <td  width="200" style="border: 1px solid black; text-align: center">${courseClass.name}</td>
+            <td  width="100" style="border: 1px solid black; text-align: center">${courseClass.startDate}</td>
+            <td  width="100" style="border: 1px solid black; text-align: center">${courseClass.endDate}</td>
             <td width="50" style="border: 1px solid black; text-align: center"> <a href="http://localhost:8080/learners_academy_war_exploded/courseclass?id=${courseClass.id}&page=assignTeachers">Edit</a>
             <td width="50" style="border: 1px solid black; text-align: center"> <a href="http://localhost:8080/learners_academy_war_exploded/courseclass?id=${courseClass.id}&page=viewStudents">View</a>
             <td width="50" style="border: 1px solid black; text-align: center"> <a href="http://localhost:8080/learners_academy_war_exploded/courseclass?id=${courseClass.id}&page=report">View</a>
